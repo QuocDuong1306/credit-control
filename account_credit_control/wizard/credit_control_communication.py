@@ -217,14 +217,15 @@ class CreditControlCommunication(models.TransientModel):
                 'mail_message_id': email.id,
                 'state': state,
             })
-            email.attachment_ids = [(0, 0, {
-                'name': att[0],
-                'datas': att[1],
-                'datas_fname': att[0],
-                'res_model': 'mail.mail',
-                'res_id': email.id,
-                'type': 'binary',
-            }) for att in attachment_list]
+            if attachment_list:
+                email.attachment_ids = [(0, 0, {
+                    'name': att[0],
+                    'datas': att[1],
+                    'datas_fname': att[0],
+                    'res_model': 'mail.mail',
+                    'res_id': email.id,
+                    'type': 'binary',
+                }) for att in attachment_list]
             emails |= email
         return emails
 
