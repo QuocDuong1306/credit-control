@@ -28,8 +28,11 @@ class CreditControlPolicy(models.Model):
         comodel_name="account.account",
         string="Accounts",
         required=True,
-        domain="[('internal_type', '=', 'receivable')]",
+        domain="[('account_type', '=', 'asset_receivable')]",
         help="This policy will be active only for the selected accounts",
+        groups="account.group_account_invoice,"
+        "account.group_account_manager,"
+        "account.group_account_readonly",
     )
     active = fields.Boolean(default=True)
 
