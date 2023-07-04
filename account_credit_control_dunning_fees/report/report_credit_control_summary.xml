@@ -17,7 +17,7 @@
       <span
                 t-field="l.balance_due_total"
                 t-options='{"widget": "monetary",
-        "display_currency": "l.currency_id or l.company_id.currency_id"}'
+        "display_currency": l.currency_id or l.company_id.currency_id}'
             />
     </xpath>
   </template>
